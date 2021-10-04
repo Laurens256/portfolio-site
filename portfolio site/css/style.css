@@ -8,6 +8,7 @@
     padding: 0;
     font-family: OpenSans, Arial, Helvetica, sans-serif;
     text-decoration: none;
+    list-style: none;
 }
 
 body {
@@ -16,8 +17,8 @@ body {
     /* overflow-x: hidden; */
 }
 
-/* navbar */
-nav {
+/* nav */
+#mainnav {
     background-color: #252b3e;
     width: 100%;
     height: 15vh;
@@ -26,12 +27,7 @@ nav {
     top: 0;
 }
 
-/* .responsivenav {
-    height: 10vh
-} */
-
-nav ul {
-    list-style: none;
+#mainnav ul {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -39,27 +35,111 @@ nav ul {
     margin-top: 1.5%;
 }
 
-nav ul li {
+#mainnav ul li {
     margin-left: 3%;
 }
 
-nav ul li a.active {
+#mainnav ul li img {
+    margin-top: 1vh;
+    width: 9vh;
+    height: 7vh;
+}
+
+#mainnav ul li a.active {
     color: #ff0038;
     border-bottom: .7vh solid #ff0038;
     padding-bottom: 2vh;
 }
 
-nav ul li a {
-    color: white;
+#mainnav ul li a {
     font-size: 3.5vh;
     padding: 0.5vw;
     transition: 0.3s;
     cursor: pointer;
 }
 
-nav ul li a:hover, nav ul li a:focus {
+#mainnav ul li a:hover, #mainnav ul li a:focus {
     color: #ff0038;
 }
+
+/* mobile nav */
+#mobilenav {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+#mobilenav ul {
+    margin-top: 15vh;
+}
+
+#mobilenav ul li {
+    margin-top: 4vh;
+}
+
+#mobilenav ul li img {
+    border: solid white .6vh;
+    border-radius: 9999px;
+    padding: 2vw;
+    width: 11.5vw;
+}
+
+#mobilenav ul li a {
+    font-size: 6vh;
+}
+
+#mobilenav .active {
+    color: #ff0038;
+}
+
+.mobilenavscrolldown {
+    animation: mobilenavscrolldown .7s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes mobilenavscrolldown {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.mobilenavscrollup {
+    animation: mobilenavscrollup .7s;
+}
+
+@keyframes mobilenavscrollup {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100%;
+    }
+}
+
+.hamburger {
+    display: none;
+    
+}
+
+@media screen and (max-width: 800px) {
+     #mainnav .navitems:not(.hamburger) {
+         display: none;
+        }
+         .hamburger {
+            display: inline;
+            height: 8vh;
+         }
+         body #mainnav ul {
+             margin-top: 3vh;
+         }
+    }
 
 /* content */
 main {
@@ -107,10 +187,10 @@ footer {
     overflow: hidden;
     position: fixed;
     bottom: 0;
+    z-index: -1;
 }
 
 footer ul {
-    list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
