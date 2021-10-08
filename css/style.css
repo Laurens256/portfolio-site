@@ -224,6 +224,10 @@ footer small {
     left: .5vw;
 }
 
+#brtoggle {
+    display: none;
+}
+
 /* mobile view */
 @media screen and (max-width: 800px) {
     /* nav */
@@ -245,6 +249,10 @@ footer small {
         }
     body #pagescontainer section div header {
         text-align: left;
+        word-break: break-all;
+    }
+    #brtoggle {
+        display: block;
     }
 
    }
