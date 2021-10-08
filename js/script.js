@@ -17,6 +17,9 @@ const bodyElement = document.querySelector("body");
 
 //change pages + markup
 function changePage(event) {
+    let scrollWidth = window.innerWidth || document.documentElement.clientWidth || 
+    document.body.clientWidth;
+
 	for (let i = 0; i < currentPageNav.length; i++) {
 		currentPageNav[i].classList.remove("active");
 	}
@@ -30,15 +33,15 @@ function changePage(event) {
 
     if  (event.target.classList.contains("homenav")) {
         currentPageNav = homenav;
-        currentPage = 0;
+        mainElement.scrollTo(0, 0);
         document.title = "Home";
     } else if (event.target.classList.contains("werknav")) {
         currentPageNav = werknav;
-        currentPage = 1000;
+        mainElement.scrollTo(scrollWidth, 0);
         document.title = "Mijn werk";
     } else if (event.target.classList.contains("contactnav")){
         currentPageNav = contactnav;
-        currentPage = 2000;
+        mainElement.scrollTo(scrollWidth*2, 0);
         document.title = "Contact";
     } else if (event.target.id == "hamburgernav"){
         mobileNav.classList.add("mobilenavscrolldown"); 
@@ -46,7 +49,6 @@ function changePage(event) {
     for (let i = 0; i < currentPageNav.length; i++) {
 		currentPageNav[i].classList.add("active");
 	}
-    mainElement.scrollTo(currentPage, 0);
     for (let i = 0; i < sectionElement.length; i++) {
 		sectionElement[i].scrollTo(0, 0);
     }
