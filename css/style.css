@@ -132,19 +132,6 @@ a {
     
 }
 
-@media screen and (max-width: 800px) {
-     #mainnav .navitems:not(.hamburger) {
-         display: none;
-        }
-         .hamburger {
-            display: inline;
-            height: 8vh;
-         }
-         body #mainnav ul {
-             margin-top: 3vh;
-         }
-    }
-
 /* content algemeen */
 main {
     overflow-x: hidden;
@@ -236,3 +223,28 @@ footer small {
     bottom: .5vh;
     left: .5vw;
 }
+
+/* mobile view */
+@media screen and (max-width: 800px) {
+    /* nav */
+    #mainnav .navitems:not(.hamburger) {
+        display: none;
+       }
+    .hamburger {
+        display: inline;
+        height: 8vh;
+        }
+    body #mainnav ul {
+        margin-top: 3vh;
+        }
+    /* main */
+    body #pagescontainer section div {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        }
+    body #pagescontainer section div header {
+        text-align: left;
+    }
+
+   }
