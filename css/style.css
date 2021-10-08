@@ -12,12 +12,16 @@
 }
 
 body {
-    background-color: #232533;
+    /* background-color: #232533; */
     color: white;
-    /* overflow-x: hidden; */
+    /* overflow: hidden; */
 }
 
 /* nav */
+a {
+    color: white;
+}
+
 #mainnav {
     background-color: #252b3e;
     width: 100%;
@@ -141,53 +145,75 @@ body {
          }
     }
 
-/* content */
+/* content algemeen */
 main {
+    overflow-x: hidden;
+    /* overflow: hidden; */
     white-space: nowrap;
-    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    background-color: blue;
+    height: 100%;
 }
 
 main section {
+    scroll-behavior: smooth;
     display: inline-block;
-    width: 100%;
+    scroll-snap-align: start;
     transition: 1s;
+    height: 84.2vh;
+    overflow-x: hidden;
 }
 
 main section article {
     height: 40vh;
-    width: 60%;
-    margin: 3% auto;
+    width: 100vw;
+    /* margin: 0 auto; */
+    background-color: red;
 }
 
-main section article:nth-of-type(2n) {
-    background-color: #252b3e;
+main section article div {
+    margin: 0 auto;
+    width: 70vw;
 }
+
+/* main section article:nth-of-type(2n) {
+    background-color: #252b3e;
+} */
 
 /* homepage */
+#homepage article {
+    height: 80vh;
+}
+
 #homepage article header {
     text-align: right;
     float: right;
+    margin-top: 8vh;
 }
 
 #homepage article header h1 {
     font-weight: normal;
-    font-size: 6vw;
+    font-size: 7vh;
 }
 
 #homepage article header p {
-    font-size: 2.5vw;
+    font-size: 4vh;
+}
+
+#homepage article img {
+    margin-top: 10vh;
+    width: 35vh;
 }
 
 /* Footer */
 footer {
+    position: relative;
     height: 30vh;
     width: 100%;
     background-color: #252b3e;
     text-align: center;
     overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    z-index: -1;
 }
 
 footer ul {
@@ -203,4 +229,10 @@ footer ul li a img {
 
 footer ul li a img:hover {
     opacity: 80%;
+}
+
+footer small {
+    position: absolute;
+    bottom: .5vh;
+    left: .5vw;
 }
