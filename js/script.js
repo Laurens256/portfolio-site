@@ -9,7 +9,6 @@ const sectionElement = document.querySelectorAll("section");
 const homePagina = document.querySelector("#homepage");
 const mijnWerkPagina = document.querySelector("#mijnwerkpage");
 const contactPagina = document.querySelector("#contactpage");
-let currentPage = 0;
 
 const mobileNav = document.querySelector("#mobilenav");
 
@@ -44,26 +43,18 @@ function changePage(event) {
         mainElement.scrollTo(scrollWidth*2, 0);
         document.title = "Contact";
     } else if (event.target.id == "hamburgernav"){
-        mobileNav.classList.add("mobilenavscrolldown"); 
+        mobileNav.classList.add("mobilenavscrolldown");
     }
     for (let i = 0; i < currentPageNav.length; i++) {
 		currentPageNav[i].classList.add("active");
 	}
+    if (!event.target.classList.contains("resetscroll")) {
     for (let i = 0; i < sectionElement.length; i++) {
 		sectionElement[i].scrollTo(0, 0);
     }
-}
-
-function windowResize() {
-    mainElement.scrollTo({
-        top: 0,
-        left: currentPage,
-        behavior: "auto"
-      });
+    }
 }
 
 for (let i = 0; i < navItems.length; i++) {
 	navItems[i].addEventListener("click", changePage);
 }
-
-window.addEventListener("resize", windowResize);

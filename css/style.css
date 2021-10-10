@@ -9,12 +9,14 @@
     font-family: OpenSans, Arial, Helvetica, sans-serif;
     text-decoration: none;
     list-style: none;
+    font-weight: normal;
 }
 
 body {
-    /* background-color: #232533; */
+    background-color: #232533;
+    height: 85vh;
     color: white;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 /* nav */
@@ -68,6 +70,7 @@ a {
 
 /* mobile nav */
 #mobilenav {
+    z-index: 999;
     position: fixed;
     top: -100%;
     left: 0;
@@ -139,8 +142,6 @@ main {
     white-space: nowrap;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    background-color: blue;
-    height: 100%;
 }
 
 main section {
@@ -148,15 +149,16 @@ main section {
     display: inline-block;
     scroll-snap-align: start;
     transition: 1s;
-    height: 84.2vh;
+    height: 85vh;
     overflow-x: hidden;
 }
 
 main section article {
-    height: 40vh;
+    min-height: 40vh;
     width: 100vw;
-    /* margin: 0 auto; */
-    background-color: red;
+    background-color: #232533;
+    /* overflow-y: hidden; */
+    height: fit-content;
 }
 
 main section article div {
@@ -164,23 +166,29 @@ main section article div {
     width: 70vw;
 }
 
-/* main section article:nth-of-type(2n) {
+main section article:nth-of-type(2n) {
     background-color: #252b3e;
-} */
+}
+
+::-webkit-scrollbar {
+    display: none;
+  }
 
 /* homepage */
 #homepage article {
-    height: 80vh;
+    min-height: 80vh;
 }
 
 #homepage article header {
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 65%;
     text-align: right;
     float: right;
     margin-top: 8vh;
 }
 
 #homepage article header h1 {
-    font-weight: normal;
     font-size: 7vh;
 }
 
@@ -191,6 +199,59 @@ main section article div {
 #homepage article img {
     margin-top: 10vh;
     width: 35vh;
+}
+
+/* mijn werk page */
+#mijnwerkpage article {
+    min-height: 45vh;
+}
+
+#mijnwerkpage article div {
+    margin-top: 5vh;
+}
+
+#mijnwerkpage article div img {
+    width: 50vh;
+    margin: 0 2vh;
+    float: left;
+}
+
+#mijnwerkpage article div img.right {
+    float: right;
+}
+
+#mijnwerkpage article div p.right {
+    text-align: right;
+}
+
+#mijnwerkpage article div ul {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    gap: 3vh;
+}
+
+#mijnwerkpage article div ul a {
+    border: solid .4vh white;
+    border-radius: 1.5vh;
+    padding: 1vh;
+}
+
+#mijnwerkpage article div h2 {
+    margin-bottom: 1.5vh;
+    margin-top: -2vh;
+    font-size: 3.5vh;
+}
+
+#mijnwerkpage article div p {
+    display: inline;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+#mijnwerkpage article div a:hover {
+    transition: .3s;
+    border-color: #ff0038;
 }
 
 /* Footer */
@@ -250,9 +311,15 @@ footer small {
     body #pagescontainer section div header {
         text-align: left;
         word-break: break-all;
-    }
+    } 
     #brtoggle {
         display: block;
+    }
+    #mijnwerkpage article div p {
+        margin-top: 1.5vh;
+    }
+    #mijnwerkpage article div a {
+        margin-bottom: 2vh;
     }
 
    }
