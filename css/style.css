@@ -157,8 +157,8 @@ main section article {
     min-height: 40vh;
     width: 100vw;
     background-color: #232533;
-    /* overflow-y: hidden; */
     height: fit-content;
+    padding: 1vh 0;
 }
 
 main section article div {
@@ -225,15 +225,22 @@ main section article:nth-of-type(2n) {
 }
 
 #mijnwerkpage article div ul {
-    margin-top: 2vh;
+    margin-top: 3vh;
     display: flex;
     justify-content: center;
     gap: 3vh;
+    padding-bottom: 2vh;
 }
 
-#mijnwerkpage article div ul a {
+#mijnwerkpage article div ul li {
     border: solid .4vh white;
     border-radius: 1.5vh;
+    min-width: 9vh;
+    text-align: center;
+}
+
+#mijnwerkpage article div ul li a {
+    display: block;
     padding: 1vh;
 }
 
@@ -252,6 +259,15 @@ main section article:nth-of-type(2n) {
 #mijnwerkpage article div a:hover {
     transition: .3s;
     border-color: #ff0038;
+}
+
+/* contactpage */
+#contactpage article form input:focus::placeholder {
+    color: transparent;
+}
+
+#contactpage article form input {
+    outline: none;
 }
 
 /* Footer */
@@ -289,36 +305,55 @@ footer small {
     display: none;
 }
 
+#brtoggle2 {
+    display: block;
+}
+
 /* mobile view */
 @media screen and (max-width: 800px) {
     /* nav */
     #mainnav .navitems:not(.hamburger) {
         display: none;
-       }
+    }
     .hamburger {
         display: inline;
         height: 8vh;
-        }
+    }
     body #mainnav ul {
         margin-top: 3vh;
-        }
+    }
     /* main */
     body #pagescontainer section div {
         width: 90vw;
         display: flex;
         flex-direction: column;
-        }
-    body #pagescontainer section div header {
+    }
+    body #pagescontainer #homepage div header {
         text-align: left;
-        word-break: break-all;
+        max-width: 90%;
     } 
+    body #pagescontainer #homepage div p {
+        font-size: 3.5vh;
+        line-height: 5.2vh;
+        margin-bottom: 5vh;
+    } 
+    body #pagescontainer #homepage div img {
+        margin-top: 1vh;
+    }
     #brtoggle {
         display: block;
+    }
+
+    #brtoggle2 {
+        display: none;
     }
     #mijnwerkpage article div p {
         margin-top: 1.5vh;
     }
-    #mijnwerkpage article div a {
+    #mijnwerkpage article div p.right {
+        text-align: left;
+    }
+    #mijnwerkpage article div ul li {
         margin-bottom: 2vh;
     }
 
