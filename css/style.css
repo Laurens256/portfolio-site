@@ -262,12 +262,22 @@ main section article:nth-of-type(2n) {
 }
 
 /* contactpage */
-#contactpage article form input:focus::placeholder {
+#contactpage article div form input:focus::placeholder {
     color: transparent;
 }
 
-#contactpage article form input {
+#contactpage article div form {
+    
+}
+
+#contactpage article div form input {
     outline: none;
+    display: block;
+    background-color: #252b3e;
+    border: white .4vh solid;
+    border-radius: 1.5vh;
+    color: white;
+    padding: 1vh;
 }
 
 /* Footer */
@@ -292,7 +302,7 @@ footer ul li a img {
 }
 
 footer ul li a img:hover {
-    opacity: 80%;
+    opacity: 70%;
 }
 
 footer small {
