@@ -14,7 +14,7 @@
             <li><a href="#" class="homenav navitems active">Home</a></li>
             <li><a href="#" class="werknav navitems">Mijn werk</a></li>
             <li><a href="#" class="contactnav navitems">Contact</a></li>
-            <li><a href="#"><img class="hamburger navitems resetscroll" id="hamburgernav" src="img/hamburger.png" alt="hamburger menu icoon"></a></li>
+            <li><a href="#" class="hamburger"><img class="hamburger navitems resetscroll" id="hamburgernav" src="img/hamburger.png" alt="hamburger menu icoon"></a></li>
         </ul>
     </nav>
 
@@ -117,16 +117,16 @@
     <section id="contactpage">
         <article>
             <div>
-            <form name="contactform" netlify>
-                <label>Naam*</label>
+            <form name="contactform" data-netlify="true">
+                <label>Naam</label><em>*</em>
                 <input type="text" placeholder="Fred van Weert" required>
                 <label>Bedrijfsnaam</label>
                 <input type="text" placeholder="Freddie Inc.">
-                <label>Email*</label>
+                <label>Email</label><em>*</em>
                 <input type="email" placeholder="frederikkie@gmail.com" required>
                 <label>Telefoonnummer</label>
                 <input type="tel" placeholder="06-12345678">
-                <label>Bericht*</input>
+                <label>Bericht</label><em>*</em>
                 <input type="text" placeholder="Leuke site heb je daar." required>
                 <input type="submit">
             </form>
