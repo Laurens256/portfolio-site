@@ -5,7 +5,7 @@ const contactnav = document.querySelectorAll(".contactnav");
 
 //mobile nav
 const navItems = document.querySelectorAll(".navitems");
-const navToggleButtons = document.querySelectorAll(".hamburger");
+const navToggleButtons = document.querySelectorAll(".togglemobilenav");
 const darkModeToggle = document.querySelector("#mobilenav ul li:last-of-type button");
 
 

@@ -14,7 +14,7 @@
             <li><a href="#" class="homenav navitems active">Home</a></li>
             <li><a href="#" class="werknav navitems">Mijn werk</a></li>
             <li><a href="#" class="contactnav navitems">Contact</a></li>
-            <li><button type="button" aria-label="hamburger menu" class="hamburger noscrollreset">
+            <li><button type="button" aria-label="hamburger menu" class="togglemobilenav noscrollreset">
                 <span></span>
                 <span></span>
             </button></li>
@@ -23,9 +23,9 @@
 
     <nav id="mobilenav">
         <ul>
-            <li><a class="homenav navitems active hamburger">Home</a></li>
-            <li><a class="werknav navitems hamburger">Mijn werk</a></li>
-            <li><a class="contactnav navitems hamburger">Contact</a></li>
+            <li><a class="homenav navitems active togglemobilenav">Home</a></li>
+            <li><a class="werknav navitems togglemobilenav">Mijn werk</a></li>
+            <li><a class="contactnav navitems togglemobilenav">Contact</a></li>
             <li>                
                 <p>Light mode</p>
                 <button title="toggle dark mode"><span></span></button>
@@ -33,6 +33,8 @@
             </li>
         </ul>
     </nav>
+
+    <div id="closemobilenav" class="togglemobilenav"></div>
 
     <main id="pagescontainer">
         <section id="homepage">
