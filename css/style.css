@@ -121,10 +121,11 @@ mobile nav
     position: fixed;
     top: -100%;
     left: 0;
-    height: 60%;
+    height: 50%;
     width: 100%;
     background-color: var(--achtergrondsecundair);
     transition: all .5s cubic-bezier(.16,.56,.23,1.01);
+    padding-bottom: 10%;
 }
 
 #mobilenav ul {
