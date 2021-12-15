@@ -28,7 +28,12 @@ function toggleNav() {
     bodyElement.classList.toggle("activenav");
 }
 
-
+//zorgt ervoor dat mobile nav verwdijnt als je van klein naar groot scherm gaat terwijl het menu open is
+function screenSizeSwitch() {
+    if (window.matchMedia('(min-width: 767px)').matches) {
+        bodyElement.classList.remove("activenav");
+    }
+}
 
 //change pages + active style
 function changePage(event) {
@@ -105,6 +110,7 @@ for (let i = 0; i < navItems.length; i++) {
 for (let i = 0; i < navToggleButtons.length; i++) {
 	navToggleButtons[i].addEventListener("click", toggleNav);
 }
+window.addEventListener('resize', screenSizeSwitch);
 
 window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", toggleDarkMode);
 darkModeToggle.addEventListener("click", toggleDarkMode);
