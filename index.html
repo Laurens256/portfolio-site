@@ -14,30 +14,34 @@
             <li><a href="#" class="homenav navitems active">Home</a></li>
             <li><a href="#" class="werknav navitems">Mijn werk</a></li>
             <li><a href="#" class="contactnav navitems">Contact</a></li>
-            <li><a href="#" class="hamburger"><img class="hamburger navitems resetscroll" id="hamburgernav" src="img/hamburger.png" alt="hamburger menu icoon"></a></li>
+            <li><button type="button" aria-label="hamburger menu" class="hamburger noscrollreset">
+                <span></span>
+                <span></span>
+            </button></li>
         </ul>
     </nav>
 
     <nav id="mobilenav">
-        <ul id="mobilenavchildren">
-            <li><img class="closenav navitems resetscroll" src="img/kruisje.png" alt="kruis icoon"></li>
-            <li><a class="homenav navitems active closenav">Home</a></li>
-            <li><a class="werknav navitems closenav">Mijn werk</a></li>
-            <li><a class="contactnav navitems closenav">Contact</a></li>
+        <ul>
+            <li><a class="homenav navitems active hamburger">Home</a></li>
+            <li><a class="werknav navitems hamburger">Mijn werk</a></li>
+            <li><a class="contactnav navitems hamburger">Contact</a></li>
+            <li>                
+                <p>Light mode</p>
+                <button title="toggle dark mode"><span></span></button>
+                <p>Dark mode</p>
+            </li>
         </ul>
     </nav>
 
     <main id="pagescontainer">
         <section id="homepage">
     <article>
-        <div>
-        <header>
+        <div class="nogutter">
             <h1>Laurens Duin</h1>
-            <p>Front-end Developer, <br id="brtoggle2">
-            Student aan de Hogeschool<br id="brtoggle"> van Amsterdam</p>
-        </header>
+            <p>Front-end Developer, Student aan de Hogeschool van Amsterdam</p>
         <img src="img/instagram.png" alt="Laurens Duin">
-    </div>
+        </div>
     </article>
     <footer>
         <!-- Icons made by https://www.freepik.com -->
@@ -51,7 +55,7 @@
 
     <section id="mijnwerkpage">
         <article>
-            <div class="mijnwerklayout">
+            <div class="nogutter">
                 <h2>Titel project</h2>
                 <img src="img/test.png" alt="placeholder">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
@@ -62,18 +66,7 @@
             </div>
         </article>
         <article>
-            <div class="mijnwerklayout">
-                <h2>Titel project</h2>
-                <img src="img/test.png" alt="placeholder" class="right">
-                <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
-                <ul>
-                <li><a href="https://oege.ie.hva.nl/~duinl2/" target="_blank">Demo</a></li>
-                <li><a href="https://github.com/Laurens256/oege/" target="_blank">Code</a></li>
-                </ul>
-            </div>
-        </article>
-        <article>
-            <div class="mijnwerklayout">
+            <div class="nogutter">
                 <h2>Titel project</h2>
                 <img src="img/test.png" alt="placeholder">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
@@ -84,17 +77,29 @@
             </div>
         </article>
         <article>
-            <div class="mijnwerklayout">
+            <div class="nogutter">
                 <h2>Titel project</h2>
-                <img src="img/test.png" alt="placeholder" class="right">
-                <p class="right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
+                <img src="img/test.png" alt="placeholder">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
                 <ul>
                 <li><a href="https://oege.ie.hva.nl/~duinl2/" target="_blank">Demo</a></li>
                 <li><a href="https://github.com/Laurens256/oege/" target="_blank">Code</a></li>
                 </ul>
             </div>
-        </article>        <article>
-            <div class="mijnwerklayout">
+        </article>
+        <article>
+            <div class="nogutter">
+                <h2>Titel project</h2>
+                <img src="img/test.png" alt="placeholder">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
+                <ul>
+                <li><a href="https://oege.ie.hva.nl/~duinl2/" target="_blank">Demo</a></li>
+                <li><a href="https://github.com/Laurens256/oege/" target="_blank">Code</a></li>
+                </ul>
+            </div>
+        </article>        
+        <article>
+            <div class="nogutter">
                 <h2>Titel project</h2>
                 <img src="img/test.png" alt="placeholder">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quae doloremque ex, mollitia consequuntur, nemo ratione rerum, reiciendis alias provident dicta. Ab nihil quaerat explicabo, blanditiis tenetur repellat rerum vitae! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit officia quas quibusdam enim voluptate, at illo! Necessitatibus nemo totam dolor facilis doloremque quo excepturi cum, odit ea similique numquam ullam?</p>
@@ -116,7 +121,7 @@
 
     <section id="contactpage">
         <article>
-            <div>
+            <div class="nogutter">
             <form name="contactform" data-netlify="true">
                 <label>Naam</label><em>*</em>
                 <input name="Naam" type="text" placeholder="Fred van Weert" required>
