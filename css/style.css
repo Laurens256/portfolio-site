@@ -17,6 +17,8 @@
     --zwart: #000000;
 
     --tekstkleur: #ffffff;
+    --tekstkleuralt: #000000;
+
     --achtergrondprimar: #232533;
     --achtergrondsecundair: #252b3e;
 
@@ -25,6 +27,8 @@
 
 :root.lightmode {
     --tekstkleur: #000000;
+    --tekstkleuralt: #ffffff;
+
     --achtergrondprimar: #DCDACC;
     --achtergrondsecundair: #DAD4C1;
 
@@ -50,6 +54,46 @@ button {
 
 
 
+/* zorgt ervoor dat je met tab makkelijker kan navigeren */
+.test {
+    display: block;
+    height: 8em;
+    /* background: rgba(0, 0, 0, 0.5); */
+    z-index: 100;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+}
+
+.test ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 13.6em;
+    margin-top: 1.5em;
+    gap: 2em;
+}
+
+.test ul li {
+    width: 9em;
+    height: 3em;
+    /* background: red; */
+}
+
+.test ul li:first-of-type {
+    width: 7em;
+}
+
+.test ul li:nth-of-type(2) {
+    width: 10em;
+}
+
+.test ul li a {
+    height: 100%;
+    width: 100%;
+}
+
+
 /*****************************
 nav algemeen
 *****************************/
@@ -67,16 +111,13 @@ nav algemeen
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-right: 10%;
+    margin-right: 12em;
     margin-top: 1.5em;
-}
-
-#mainnav ul li {
-    margin-left: 3em;
+    gap: 3em;
 }
 
 #mainnav ul li a {
-    font-size: 2em;
+    font-size: 2rem;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -138,7 +179,7 @@ mobile nav
 
 #mobilenav ul li a {
     margin: 0 auto;
-    font-size: 2.5em;
+    font-size: 2.5rem;
     width: 100%;
 }
 
@@ -272,12 +313,12 @@ homepage
 }
 
 #homepage article:first-of-type h1 {
-    font-size: 3em;
+    font-size: 3rem;
     grid-column: 2 / 3;
 }
 
 #homepage article:first-of-type p {
-    font-size: 2em;
+    font-size: 2rem;
     grid-column: 2 / 3;
     max-width: 15em;
     white-space: normal;
@@ -344,7 +385,7 @@ mijn werk page
 
 #mijnwerkpage article div h2 {
     margin-bottom: .5em;
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 #mijnwerkpage article div a:hover {
@@ -397,14 +438,28 @@ footer ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 3em;
 }
 
-footer ul li a img {
-    width: 40%;
+footer ul li a svg {
+    width: 3.5em;
+    fill: #ffffff;
+    transition: all .2s;
 }
 
-footer ul li a img:hover {
-    opacity: 70%;
+footer ul li:nth-of-type(2) a svg {
+    fill: none;
+    stroke: var(--tekstkleur);
+    stroke-width: 1.5em;
+}
+
+footer ul li a svg:hover {
+    fill: var(--navactive);
+}
+
+footer ul li:nth-of-type(2) a svg:hover {
+    fill: none;
+    stroke: var(--navactive);
 }
 
 footer small {
@@ -426,6 +481,10 @@ nav
     height: 4.5em;
 }
 
+#mainnav ul {
+    margin-right: 2em;
+}
+
 #mainnav ul li:not(#mainnav ul li:last-of-type) {
      display: none;
 }
@@ -433,6 +492,10 @@ nav
 #mainnav ul li:last-of-type button,
 #mobilenav ul li:first-of-type button {
     display: flex;
+}
+
+.test {
+    display: none;
 }
 
 
@@ -457,12 +520,12 @@ body #pagescontainer #homepage div header {
 
 body #pagescontainer #homepage div p {
     grid-column: 1 / 2;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin-bottom: 2em;
 } 
     
 #homepage article:first-of-type h1 {
-    font-size: 3em;
+    font-size: 3rem;
     grid-column: 1 / 2;
 }
     
