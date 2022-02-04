@@ -23,8 +23,13 @@ const bodyElement = document.querySelector("body");
 const rootElement = document.querySelector(":root");
 let currentTheme = localStorage.getItem("currentTheme");
 
+//highlight tabbed element voor testing
+// document.addEventListener('focus', function() {
+//     console.log('focused: ', document.activeElement)
+//   }, true);
 
-function toggleNav() {
+
+function toggleMobileNav() {
     bodyElement.classList.toggle("activenav");
 }
 
@@ -37,32 +42,36 @@ function screenSizeSwitch() {
 
 //change pages + active style
 function changePage(event) {
-    const scrollWidth = window.innerWidth || document.documentElement.clientWidth || 
-    document.body.clientWidth;
+    const scrollWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    //highlight actieve pagina
-	for (let i = 0; i < currentPageNav.length; i++) {
+    //haalt active class weg van alle elementen
+	for (let i=0; i<currentPageNav.length; i++) {
 		currentPageNav[i].classList.remove("active");
 	}
+
 
     if (event.target.classList.contains("homenav")) {
         currentPageNav = homenav;
         mainElement.scrollTo(0, 0);
         document.title = "Home";
     } else if (event.target.classList.contains("werknav")) {
+
         currentPageNav = werknav;
         mainElement.scrollTo(scrollWidth, 0);
         document.title = "Mijn werk";
     } else if (event.target.classList.contains("contactnav")){
+
         currentPageNav = contactnav;
         mainElement.scrollTo(scrollWidth*2, 0);
         document.title = "Contact";
     } 
 
+    //voegt active state toe aan nodige elementen (underline)
     for (let i = 0; i < currentPageNav.length; i++) {
 		currentPageNav[i].classList.add("active");
 	}
 
+    //scrollt de pagina terug naar boven
     if (!event.target.classList.contains("noscrollreset")) {
     for (let i = 0; i < sectionElement.length; i++) {
 		sectionElement[i].scrollTo(0, 0);
@@ -84,14 +93,15 @@ function toggleDarkMode(event) {
         return;
     }
 
-    if (event.target.tagName == "BUTTON" || event.target.tagName == "SPAN") {
+    if (event.target.tagName == "BUTTON" || event.target.tagName == "SPAN") {   //fysieke togglebutton
         rootElement.classList.toggle("lightmode");
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {    //kijkt naar systeemvoorkeur alleen
         rootElement.classList.add("lightmode");
-    } else {
+    } else {    //default fallback is dark theme
         rootElement.classList.remove("lightmode");
     }
     
+    //localstorage voor volgende keer dat de pagina wordt bezocht
     if (rootElement.classList.contains("lightmode")) {
         localStorage.setItem("currentTheme", "light");
     } else {
@@ -108,7 +118,7 @@ for (let i = 0; i < navItems.length; i++) {
 }
 
 for (let i = 0; i < navToggleButtons.length; i++) {
-	navToggleButtons[i].addEventListener("click", toggleNav);
+	navToggleButtons[i].addEventListener("click", toggleMobileNav);
 }
 window.addEventListener('resize', screenSizeSwitch);
 
