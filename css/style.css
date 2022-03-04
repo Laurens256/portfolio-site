@@ -302,13 +302,27 @@ homepage
 }
 
 #homepage article:nth-of-type(2) > div {
-    display: block;
-    text-align: center;
+    grid-column-gap: 2em;
+    display: flex;
 }
 
 #homepage article:nth-of-type(2) h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: .2em;
+    text-align: left;
+}
+
+#homepage article:nth-of-type(2) p {
+    text-align: left;
+}
+
+#homepage article:nth-of-type(2) h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+}
+
+#homepage article:nth-of-type(2) #uitgelichtimg {
+    width: 70%;
 }
 
 
@@ -436,6 +450,10 @@ contactpage
 
 #contactpage article div form em {
     color: var(--navactive);
+}
+
+#contactpage aside h2 {
+    font-size: 1.2rem;
 }
 
 
