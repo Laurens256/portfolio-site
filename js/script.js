@@ -6,14 +6,16 @@ const contactnav = document.querySelectorAll(".contactnav");
 //mobile nav
 const navItems = document.querySelectorAll(".navitems");
 const navToggleButtons = document.querySelectorAll(".togglemobilenav");
-const darkModeToggle = document.querySelector("#mobilenav ul li:last-of-type button");
+const darkModeToggle = document.querySelectorAll(".lightmodetoggle");
 
 
 let currentPageNav = homenav;
 
+const mijnWerkPopupButton = document.querySelectorAll(".meerinfo");
 
 const mainElement = document.querySelector("main");
 const sectionElement = document.querySelectorAll("section");
+const sectionChildren = document.querySelectorAll("main section a[href], button, input");
 // const homePagina = document.querySelector("#homepage");
 // const mijnWerkPagina = document.querySelector("#mijnwerkpage");
 // const contactPagina = document.querySelector("#contactpage");
@@ -26,7 +28,7 @@ let currentTheme = localStorage.getItem("currentTheme");
 //highlight tabbed element voor testing
 // document.addEventListener('focus', function() {
 //     console.log('focused: ', document.activeElement)
-//   }, true);
+// }, true);
 
 
 function toggleMobileNav() {
@@ -38,6 +40,11 @@ function screenSizeSwitch() {
     if (window.matchMedia('(min-width: 767px)').matches) {
         bodyElement.classList.remove("activenav");
     }
+}
+
+//mijn werk page popup
+function mijnWerkPopup() {
+    console.log("ja");
 }
 
 //change pages + active style
@@ -81,6 +88,32 @@ function changePage(event) {
 
 
 
+//navigatie met tab + tabindex correctie
+function tabNav(event) {
+	for (let i=0; i<currentPageNav.length; i++) {
+		currentPageNav[i].classList.remove("active");
+	}
+    // keycode tab is 9
+    if (event.keyCode == 9) {
+        const activeElementParent = document.activeElement.closest("section");
+        if(activeElementParent == homepage) {
+            currentPageNav = homenav;
+        }   else if(activeElementParent == mijnwerkpage) {
+            currentPageNav = werknav;
+        }   else if(activeElementParent == contactpage) {
+            currentPageNav = contactnav;
+        }
+        
+        // updateScreen(currentPageNav);
+    }
+        for (let i = 0; i < currentPageNav.length; i++) {
+        currentPageNav[i].classList.add("active");
+    }
+    //wanneer element van volgende "pagina" tabbed is, verander active pagina
+}
+
+
+
 //darkmode toggle
 function toggleDarkMode(event) {
     //pagina load geeft als event undefined, alleen dan kijken naar localstorage/systeemvoorkeur
@@ -120,7 +153,15 @@ for (let i = 0; i < navItems.length; i++) {
 for (let i = 0; i < navToggleButtons.length; i++) {
 	navToggleButtons[i].addEventListener("click", toggleMobileNav);
 }
-window.addEventListener('resize', screenSizeSwitch);
+window.addEventListener("resize", screenSizeSwitch);
+
+document.addEventListener("keyup", tabNav);
 
 window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", toggleDarkMode);
-darkModeToggle.addEventListener("click", toggleDarkMode);
+for(let i=0; i<darkModeToggle.length; i++) {
+    darkModeToggle[i].addEventListener("click", toggleDarkMode);
+}
+
+for (let i = 0; i < mijnWerkPopupButton.length; i++) {
+	mijnWerkPopupButton[i].addEventListener("click", mijnWerkPopup);
+}

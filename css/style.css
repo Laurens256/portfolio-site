@@ -23,6 +23,9 @@
     --achtergrondsecundair: #252b3e;
 
     --navactive: #ff0038;
+    --linkkleur: #ff0038;
+
+    --tabkleur: #ff0038;
 }
 
 :root.lightmode {
@@ -33,6 +36,11 @@
     --achtergrondsecundair: #DAD4C1;
 
     --navactive: #ff0038;
+}
+
+*:focus-visible {
+    outline: var(--tabkleur) dashed;
+    outline-width: 4px;
 }
 
 body {
@@ -60,7 +68,7 @@ nav algemeen
 #mainnav {
     background-color: var(--achtergrondsecundair);
     width: 100vw;
-    height: 8em;
+    height: 6.5em;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -151,7 +159,7 @@ mobile nav
     align-items: center;
 }
 
-#mobilenav ul li:last-of-type button {
+.lightmodetoggle {
     position: relative;
     height: 1.8em;
     width: 3.5em;
@@ -161,7 +169,7 @@ mobile nav
     margin: 0 1em;
 }
 
-#mobilenav ul li:last-of-type button span {
+.lightmodetoggle span {
     position: absolute;
     height: 1.4em;
     width: 1.4em;
@@ -172,7 +180,7 @@ mobile nav
     right: 0.2em;
 }
 
-html.lightmode #mobilenav ul li:last-of-type button span {
+html.lightmode .lightmodetoggle span {
     transform: translateX(-125%);
 }
 
@@ -225,7 +233,7 @@ main {
     white-space: nowrap;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    margin-top: 8em;
+    margin-top: 6.5em;
 }
 
 main section {
@@ -247,6 +255,7 @@ main section article {
 }
 
 main section article div.nogutter {
+    white-space: normal;
     margin: 0 auto;
     width: 70%;
     display: grid;
@@ -271,7 +280,7 @@ custom scrollbar (nog doen)
 homepage
 *****************************/
 #homepage article:first-of-type div.nogutter {
-    column-gap: 7em;
+    column-gap: 4em;
 }
 
 #homepage article:first-of-type h1 {
@@ -280,17 +289,26 @@ homepage
 }
 
 #homepage article:first-of-type p {
-    font-size: 2rem;
+    font-size: 1.7rem;
     grid-column: 2 / 3;
     max-width: 15em;
-    white-space: normal;
 }
 
 #homepage article:first-of-type img {
     grid-column: 1 / 2;
     justify-self: right;
     grid-row: 1 / 3;
-    width: 30em;
+    width: 20em;
+}
+
+#homepage article:nth-of-type(2) > div {
+    display: block;
+    text-align: center;
+}
+
+#homepage article:nth-of-type(2) h2 {
+    font-size: 1.5rem;
+    margin-bottom: .2em;
 }
 
 
@@ -312,11 +330,16 @@ mijn werk page
     overflow-wrap: break-word;
 }
 
+#mijnwerkpage article div p a.meerinfo {
+    color: var(--linkkleur);
+    text-decoration: underline;
+}
+
 #mijnwerkpage article div img {
     justify-self: center;
     width: 90%;
     margin: 0 2em;
-    grid-row: 1 / 3;
+    grid-row: 1 / 4;
 }
 
 #mijnwerkpage article:nth-of-type(odd) div img {
@@ -332,6 +355,10 @@ mijn werk page
 
 #mijnwerkpage article:nth-of-type(odd) div ul {
     grid-column: 2 / 3;
+}
+
+#mijnwerkpage article:nth-of-type(even) div ul {
+    grid-column: 1 / 2;
 }
 
 #mijnwerkpage article div ul li {
@@ -352,9 +379,26 @@ mijn werk page
     height: fit-content;
 }
 
-#mijnwerkpage article div a:hover {
+#mijnwerkpage article div p > a {
+    display: inline;
+    color: var(--linkkleur);
+}
+
+#mijnwerkpage article div li:hover, 
+#mijnwerkpage article div li:focus {
     transition: .3s;
-    border-color: #ff0038;
+    border-color: var(--navactive);
+}
+
+/* popups */
+#mijnwerkpage article div.mijnwerkpopup {
+    width: 50em;
+    height: 30em;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
 }
 
 
@@ -366,7 +410,17 @@ contactpage
     color: transparent;
 }
 
-#contactpage article div form input {
+#contactpage article div form input:focus,
+#contactpage article div form textarea:focus {
+    border-color: var(--navactive);
+}
+
+/* #contactpage article div form:focus-within {
+    box-shadow: 3px 3px 5px black;
+} */
+
+#contactpage article div form input,
+#contactpage article div form textarea {
     outline: none;
     display: block;
     background-color: var(--achtergrondsecundair);
@@ -374,6 +428,10 @@ contactpage
     border-radius: 1em;
     color: white;
     padding: .5em;
+}
+
+#contactpage article div form input:nth-of-type(5) {
+    height: 4em;
 }
 
 #contactpage article div form em {
@@ -418,18 +476,35 @@ footer ul li:nth-of-type(2) a svg {
     stroke-width: 1.5em;
 }
 
-footer ul li a svg:hover {
+footer ul li a svg:hover,
+footer ul li a:focus svg {
     fill: var(--navactive);
+    transform: scale(1.1)
 }
 
-footer ul li:nth-of-type(2) a svg:hover {
+footer ul li:nth-of-type(2) a svg:hover, 
+footer ul li:nth-of-type(2) a:focus svg {
     fill: none;
     stroke: var(--navactive);
 }
 
+footer div {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 3em;
+    display: flex;
+    align-items: center;
+}
+
+footer div p {
+    display: inline;
+    font-size: .8rem;
+}
+
 footer small {
     position: absolute;
-    bottom: .5em;
+    bottom: 1.2em;
     left: .5em;
 }
 
@@ -439,11 +514,15 @@ footer small {
 mobiel
 *****************************/
 @media screen and (max-width: 768px) {
+main {
+    margin-top: 5em;
+}
 /*****************************
 nav
 *****************************/
 #mainnav {
     height: 4.5em;
+    margin-bottom: -3em;
 }
 
 #mainnav ul {
@@ -461,10 +540,6 @@ nav
 
 #mobilenav ul li:last-of-type {
     display: flex;
-}
-
-.test {
-    display: none;
 }
 
 
@@ -487,10 +562,10 @@ body #pagescontainer #homepage div header {
     max-width: 90%;
 } 
 
-body #pagescontainer #homepage div p {
+body #pagescontainer #homepage article:first-of-type div p {
     grid-column: 1 / 2;
-    font-size: 1.5rem;
-    margin-bottom: 2em;
+    font-size: 1.3rem;
+    margin-bottom: 1.8em;
 } 
     
 #homepage article:first-of-type h1 {
@@ -517,6 +592,13 @@ mijn werk (768px)
 
 #mijnwerkpage article:nth-of-type(odd) div ul {
     grid-column: auto;
+}
+
+/*****************************
+footer
+*****************************/
+footer div {
+    display: none;
 }
 }
 
