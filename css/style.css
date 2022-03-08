@@ -27,6 +27,7 @@
     --tekstkleuralt: #fff;
 
     --primair: #A0AECD;
+    --secundair: #C1E1C1;
     --accentkleur: #2568FB;
 }
 
@@ -65,6 +66,11 @@ header {
     text-align: center;
     z-index: 10;
     transition: all .3s ease-in-out;
+}
+
+body > div {
+    width: 100%;
+    height: 5em;
 }
 
 header nav {
@@ -110,6 +116,10 @@ body.openhamburger header nav button span {
 
 body.openhamburger > nav {
     transform: translateX(0);
+}
+
+body.openhamburger > nav ul li a {
+    display: block;
 }
 
 body.openhamburger header nav button {
@@ -163,6 +173,7 @@ body > nav ul li {
 
 body > nav ul li a {
     color: var(--wit);
+    display: none;
 }
 
 
@@ -176,7 +187,7 @@ index, 1e section (Laurens Duin)
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    height: 100vh;
+    height: calc(100vh - 5em); /* 100vh - hoogte van header */
 }
 
 .index section:first-of-type h1 {
@@ -277,7 +288,7 @@ index, 3e section (mijn vaardigheden)
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: lightgray;
+    background: var(--secundair);
     border-radius: 1em;
     width: fit-content;
     min-width: 12.5em;
@@ -310,9 +321,107 @@ index, 4e section (mijn werk)
     gap: 2em;
 }
 
-.index section:nth-of-type(4) ul li img {
-    width: 25vw;
+.index section:nth-of-type(4) ul li {
+    position: relative;
 }
+
+.index section:nth-of-type(4) ul li img {
+    width: 22.5vw;
+    border: solid 1px black;
+}
+
+.index section:nth-of-type(4) ul li div {
+    color: var(--wit);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    transition: all ease-in-out .2s;
+}
+
+.index section:nth-of-type(4) ul li div:hover,
+.index section:nth-of-type(4) ul li div:focus {
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 100;
+}
+
+.index section:nth-of-type(4) ul li div h3 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    padding: .5em;
+}
+
+
+
+
+
+/*****************************
+mijn werk 1e section (Among us)
+*****************************/
+.mijnwerk section {
+    display: grid;
+    width: 90vw;
+    margin: 0 5vw;
+    grid-template-columns: 65% 1fr;
+    gap: 1em;
+    height: fit-content;
+    min-height: 100vh;
+    border-bottom: solid 2px gainsboro;
+    padding: 2em 0;
+}
+
+.mijnwerk section:first-of-type {
+    padding: 0 0 2em 0;
+}
+
+.mijnwerk section img {
+    width: 100%;
+}
+
+.mijnwerk section aside {
+    padding: 1em;
+    position: relative;
+    height: 20em;
+    width: 15em;
+    background: gainsboro;
+    border-radius: 5px;
+}
+
+.mijnwerk section aside ul {
+    position: absolute;
+    display: flex;
+    bottom: 1em;
+    justify-content: center;
+    width: calc(100% - 2em);
+    gap: .5em;
+}
+
+.mijnwerk section aside ul li {
+    text-align: center;
+    padding: .5em;
+    border: solid 2px black;
+    border-radius: 10px;
+    min-width: 40%;
+}
+
+.mijnwerk section aside p {
+    margin-bottom: 1em;
+}
+
+.mijnwerk section aside p strong {
+    font-weight: bold;
+}
+
+.mijnwerk section aside ul li a {
+    display: block;
+}
+
+
+
 
 
 
@@ -372,7 +481,7 @@ mobiel
         width: 100%;
     }
 
-    .index section {
+    body section {
         margin-bottom: 2em !important;
     }
 
@@ -391,7 +500,7 @@ mobiel
 
 
     /*****************************
-    index 1e section (h1)
+    index 1e section (h1) 768px
     *****************************/
     .index section:first-of-type svg {
         margin-top: 12.5em;
@@ -400,7 +509,7 @@ mobiel
 
 
     /*****************************
-    index 2e section (wie ben ik)
+    index 2e section (wie ben ik) 768px
     *****************************/
     .index section:nth-of-type(2) {
         grid-template-columns: 1fr;
@@ -416,7 +525,7 @@ mobiel
 
 
     /*****************************
-    index 3e section (vaardigheden)
+    index 3e section (vaardigheden) 768px
     *****************************/
     .index section:nth-of-type(3) {
         width: 90vw;
@@ -438,7 +547,7 @@ mobiel
 
 
     /*****************************
-    index 4e section (mijn werk)
+    index 4e section (mijn werk) 768px
     *****************************/
     .index section:nth-of-type(4) {
         width: 90vw;
@@ -451,5 +560,33 @@ mobiel
 
     .index section:nth-of-type(4) ul li img {
         width: 100%;
+    }
+
+
+
+
+
+/*****************************
+mijn werk 1e section (Among us) 768px
+*****************************/
+.mijnwerk section {
+    grid-template-columns: 1fr;
+}
+
+.mijnwerk section aside {
+    margin: 0 auto;
+    height: 12.5em;
+}
+
+}
+
+
+
+/*****************************
+reduced motion
+*****************************/
+@media (prefers-reduced-motion) {
+    * {
+        transition: none !important;
     }
 }
