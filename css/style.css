@@ -31,13 +31,24 @@
     --accentkleur: #2568FB;
 }
 
-/* :root.darkmode {
+:root.darkmode {
+    --bodycolor: #000;
 
-} */
+    --tekstkleur: #fff;
+    --tekstkleuralt: #000;
+
+    --primair: #ffc82a;
+    --secundair: #C1E1C1;
+    --accentkleur: #2568FB;
+}
 
 *:focus-visible {
     outline: red dashed;
     outline-width: 3px;
+}
+
+body {
+    background: var(--bodycolor);
 }
 
 button {
@@ -51,6 +62,10 @@ a {
 
 h2 {
     font-weight: 600;
+}
+
+section {
+    background: var(--bodycolor);
 }
 
 
@@ -69,6 +84,7 @@ header {
 }
 
 body > div {
+    background: var(--bodycolor);
     width: 100%;
     height: 5em;
 }
@@ -176,6 +192,51 @@ body > nav ul li a {
     display: none;
 }
 
+body > nav > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 3em;
+
+}
+
+body > nav > div p {
+    color: var(--wit);
+}
+
+body > nav div button {
+    position: relative;
+    height: 1.3em;
+    width: 2.8em;
+    padding: .1em;
+    background: white;
+    border-radius: 999999px;
+    margin: 0 1em;
+    transition: all linear .3s;
+}
+
+body > nav div button span {
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    border-radius: 999999px;
+    background: #6888ec;
+    top: .15em;
+    left: .15em;
+    transition: all linear .3s;
+}
+
+:root.darkmode body > nav div button {
+    background: #4f4f4f;
+}
+
+:root.darkmode body > nav div button span {
+    transform: translateX(150%);
+    background: #eccc68;
+}
+
 
 
 /*****************************
@@ -184,7 +245,7 @@ index, 1e section (Laurens Duin)
 .index section:first-of-type {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     text-align: center;
     height: calc(100vh - 5em); /* 100vh - hoogte van header */
@@ -197,7 +258,8 @@ index, 1e section (Laurens Duin)
 }
 
 .index section:first-of-type h1 span {
-    font-family: Staatliches;
+    color: var(--tekstkleur);
+    font-family: Staatliches, OpenSans;
     font-weight: normal;
     display: inline-block;
 }
@@ -220,7 +282,6 @@ index, 1e section (Laurens Duin)
 
 .index section:first-of-type svg {
     width: 1.8em;
-    margin-top: 25em;
     animation: downarrow .6s infinite alternate-reverse;
 }
 
@@ -327,7 +388,8 @@ index, 4e section (mijn werk)
 
 .index section:nth-of-type(4) ul li img {
     width: 22.5vw;
-    border: solid 1px black;
+    /* border: solid 1px black; */
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .index section:nth-of-type(4) ul li div {
@@ -489,7 +551,7 @@ mobiel
     nav uitklap 768px
     *****************************/
     body.openhamburger header nav p {
-        color: var(--tekstkleuralt);
+        color: var(--wit);
         transition: all .3s ease-in-out;
     }
 
@@ -502,8 +564,8 @@ mobiel
     /*****************************
     index 1e section (h1) 768px
     *****************************/
-    .index section:first-of-type svg {
-        margin-top: 12.5em;
+    .index section:first-of-type h1 {
+        font-size: 5.5rem;
     }
 
 
@@ -576,6 +638,7 @@ mijn werk 1e section (Among us) 768px
 .mijnwerk section aside {
     margin: 0 auto;
     height: 12.5em;
+    grid-row: 3 / 4;
 }
 
 }

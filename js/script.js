@@ -1,3 +1,4 @@
+const rootElement = document.querySelector(":root");
 const bodyElement = document.querySelector("body");
 const hamburgerToggle = document.querySelector("header nav button");
 
@@ -7,11 +8,15 @@ const mijnwerkIndex = document.querySelectorAll(
 	".index section:nth-of-type(4) ul:nth-of-type(2) li"
 );
 
+const darkModeToggle = document.querySelector("body > nav div button");
+let currentTheme = localStorage.getItem("currentTheme");
+
 //log tabbed element (testing)
 // document.addEventListener('focusin', function() {
 //   console.log('focused: ', document.activeElement)
 // }, true);
 
+//nav toggle
 const toggleNav = () => {
 	bodyElement.classList.toggle("openhamburger");
 
@@ -36,4 +41,35 @@ for (let i = 0; i < h1Letters.length; i++) {
 	});
 }
 
+const toggleDarkMode = (event) => {
+	//pagina load geeft als event undefined, alleen dan kijken naar localstorage/systeemvoorkeur
+	if (event == undefined) {
+		if (
+			window.matchMedia("(prefers-color-scheme: dark)").matches &&
+			currentTheme == null
+		) {
+			rootElement.classList.add("darkmode");
+		} else if (currentTheme == "dark") {
+			rootElement.classList.add("darkmode");
+		}
+		return;
+	}
+	if (event.target.tagName == "BUTTON" || event.target.tagName == "SPAN") {
+		rootElement.classList.toggle("darkmode");
+	} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+		rootElement.classList.add("darkmode");
+	} else {
+		rootElement.classList.remove("darkmode");
+	}
+
+	if (rootElement.classList.contains("darkmode")) {
+		localStorage.setItem("currentTheme", "dark");
+	} else {
+		localStorage.setItem("currentTheme", "light");
+	}
+};
+
+toggleDarkMode();
+
+darkModeToggle.addEventListener("click", toggleDarkMode);
 hamburgerToggle.addEventListener("click", toggleNav);
