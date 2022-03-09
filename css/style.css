@@ -22,28 +22,34 @@
     --zwart: #000;
 
     --bodycolor: #fff;
+    --navachtergrond: rgba(0, 0, 0, 0.8);
 
     --tekstkleur: #000;
     --tekstkleuralt: #fff;
 
-    --primair: #A0AECD;
-    --secundair: #C1E1C1;
-    --accentkleur: #2568FB;
+    --primair: #164db5;
+    --secundair: #13429f;
+    --accentkleur: #ff1212;
+
+    --zon: #eccc68;
+    --maan: #eccc68;
 }
 
 :root.darkmode {
-    --bodycolor: #000;
+    --bodycolor: #1E1E1E;
+    --navachtergrond: rgba(0, 0, 0, 0.8);
 
     --tekstkleur: #fff;
     --tekstkleuralt: #000;
 
     --primair: #ffc82a;
-    --secundair: #C1E1C1;
+    /* --secundair: #C23B21; */
+    --secundair: #fcd12a;
     --accentkleur: #2568FB;
 }
 
 *:focus-visible {
-    outline: red dashed;
+    outline: var(--accentkleur) dashed;
     outline-width: 3px;
 }
 
@@ -66,6 +72,10 @@ h2 {
 
 section {
     background: var(--bodycolor);
+}
+
+h2 {
+    color: var(--tekstkleur)
 }
 
 
@@ -132,9 +142,15 @@ body.openhamburger header nav button span {
 
 body.openhamburger > nav {
     transform: translateX(0);
+    border-left: 3px solid var(--accentkleur);
 }
 
 body.openhamburger > nav ul li a {
+    color: var(--wit);
+    display: block;
+}
+
+body.openhamburger > nav div:last-of-type {
     display: block;
 }
 
@@ -162,11 +178,13 @@ pagina-navigatie
 *****************************/
 body > nav {
     position: fixed;
+    min-width: 30em;
     width: 30%;
     height: 100%;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.8);
+    border-left: none;
+    background: var(--navachtergrond);
     transform: translateX(100%);
     transition: all .3s ease-in-out;
     text-align: center;
@@ -190,51 +208,60 @@ body > nav ul li {
 body > nav ul li a {
     color: var(--wit);
     display: none;
+    transition: all .2s;
 }
 
-body > nav > div {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+body > nav ul li a:hover,
+body > nav ul li a:focus-visible {
+    color: var(--accentkleur);
+}
+
+body > nav ul li a.active {
+    text-decoration: underline;
+    color: var(--accentkleur);
+}
+
+body > nav div:first-of-type {
     position: absolute;
-    bottom: 3em;
-
-}
-
-body > nav > div p {
-    color: var(--wit);
-}
-
-body > nav div button {
-    position: relative;
-    height: 1.3em;
-    width: 2.8em;
-    padding: .1em;
-    background: white;
-    border-radius: 999999px;
-    margin: 0 1em;
-    transition: all linear .3s;
-}
-
-body > nav div button span {
-    position: absolute;
-    height: 1em;
+    bottom: 3.5em;
+    left: 50%;
+    transform: translateX(-50%);
     width: 1em;
-    border-radius: 999999px;
-    background: #6888ec;
-    top: .15em;
-    left: .15em;
-    transition: all linear .3s;
+    height: 1em;
+    border: solid 5px var(--zon);
+    border-radius: 50%;
+    box-shadow: 25px 0 0 -8px var(--zon),
+                -25px 0 0 -8px var(--zon),
+                0 25px 0 -8px var(--zon),
+                0 -25px 0 -8px var(--zon),
+                17px -17px 0 -8px var(--zon),
+                -17px -17px 0 -8px var(--zon),
+                -17px 17px 0 -8px var(--zon),
+                17px 17px 0 -8px var(--zon);
+    transition: width .4s, height .4s;
+    background: var(--zon);
 }
 
-:root.darkmode body > nav div button {
-    background: #4f4f4f;
+html.darkmode body > nav div:first-of-type {
+    width: 48px;
+    height: 48px;
+    bottom: 3em;
+    background-color: transparent; 
+    box-shadow: inset 9px -9px var(--maan);
+    border-radius: 100px;
+    border: none;
 }
 
-:root.darkmode body > nav div button span {
-    transform: translateX(150%);
-    background: #eccc68;
+body > nav div:last-of-type {
+    display: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1.8em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5em;
+    height: 5em;
 }
 
 
@@ -285,6 +312,10 @@ index, 1e section (Laurens Duin)
     animation: downarrow .6s infinite alternate-reverse;
 }
 
+.index section:first-of-type svg path {
+    fill: var(--tekstkleur);
+}
+
 @keyframes downarrow {
     from {
     transform: scale(1);
@@ -318,15 +349,17 @@ index, 2e section (wie ben ik)
 
 .index section:nth-of-type(2) > div:first-of-type h2 {
     font-size: 1.8rem;
+    color: var(--tekstkleuralt);
 }
 
 .index section:nth-of-type(2) > div:first-of-type p {
     font-size: 1.25rem;
+    color: var(--tekstkleuralt);
 }
 
 .index section:nth-of-type(2) > div:first-of-type p a {
-    color: var();
-    /* kleurtje verzinnen */
+    color: var(--accentkleur);
+    text-decoration: underline;
 }
 
 
@@ -357,6 +390,10 @@ index, 3e section (mijn vaardigheden)
     padding: 1.5em;
 }
 
+.index section:nth-of-type(3) ul li {
+    color: var(--tekstkleuralt);
+}
+
 .index section:nth-of-type(3) ul li:first-child {
     font-weight: bold;
     font-size: 1.1rem;
@@ -379,6 +416,7 @@ index, 4e section (mijn werk)
 
 .index section:nth-of-type(4) ul {
     display: flex;
+    justify-content: space-between;
     gap: 2em;
 }
 
@@ -422,7 +460,7 @@ index, 4e section (mijn werk)
 
 
 /*****************************
-mijn werk 1e section (Among us)
+mijn werk
 *****************************/
 .mijnwerk section {
     display: grid;
@@ -436,8 +474,8 @@ mijn werk 1e section (Among us)
     padding: 2em 0;
 }
 
-.mijnwerk section:first-of-type {
-    padding: 0 0 2em 0;
+.mijnwerk section p {
+    color: var(--tekstkleur);
 }
 
 .mijnwerk section img {
@@ -449,8 +487,17 @@ mijn werk 1e section (Among us)
     position: relative;
     height: 20em;
     width: 15em;
-    background: gainsboro;
+    background: var(--primair);
     border-radius: 5px;
+}
+
+.mijnwerk section aside p {
+    margin-bottom: 1em;
+    color: var(--tekstkleuralt);
+}
+
+.mijnwerk section aside p strong {
+    font-weight: bold;
 }
 
 .mijnwerk section aside ul {
@@ -465,21 +512,14 @@ mijn werk 1e section (Among us)
 .mijnwerk section aside ul li {
     text-align: center;
     padding: .5em;
-    border: solid 2px black;
+    border: solid 2px var(--accentkleur);
     border-radius: 10px;
     min-width: 40%;
 }
 
-.mijnwerk section aside p {
-    margin-bottom: 1em;
-}
-
-.mijnwerk section aside p strong {
-    font-weight: bold;
-}
-
 .mijnwerk section aside ul li a {
     display: block;
+    color: var(--tekstkleuralt);
 }
 
 
@@ -510,12 +550,19 @@ footer ul li a svg {
 }
 
 footer ul li a svg path {
+    transition: all .1s;
+}
+
+footer ul li a svg path {
     fill: var(--tekstkleur)
 }
 
 footer ul li a svg:hover {
-    /* fill: var(--tekstkleur) */
     transform: scale(1.1);
+}
+
+footer ul li a svg:hover path {
+    fill: var(--accentkleur);
 }
 
 footer small {
@@ -541,6 +588,7 @@ mobiel
 
     body > nav {
         width: 100%;
+        min-width: auto;
     }
 
     body section {
@@ -558,6 +606,7 @@ mobiel
     body.openhamburger header {
         background: rgba(0,0,0,0);
     }
+
 
 
 
@@ -640,6 +689,37 @@ mijn werk 1e section (Among us) 768px
     height: 12.5em;
     grid-row: 3 / 4;
 }
+
+}
+
+
+
+/*****************************
+medium screen
+*****************************/
+@media screen and (min-width: 769px) and (max-width: 1120px) {
+    /*****************************
+    index 2e section (over mij) 1120px
+    *****************************/
+    .index section:nth-of-type(2) {
+        grid-template-columns: 1fr;
+        padding: .7em;
+    }
+
+    .index section:nth-of-type(2) img {
+        justify-self: center;
+        margin-bottom: 1em;
+    }
+
+
+
+    /*****************************
+    index 3e/4e section breedte 1120px
+    *****************************/
+    .index section:nth-of-type(3),
+    .index section:nth-of-type(4) {
+        margin: 2em 4vw 0 4vw;
+    }
 
 }
 

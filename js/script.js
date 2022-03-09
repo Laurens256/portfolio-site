@@ -1,6 +1,7 @@
 const rootElement = document.querySelector(":root");
 const bodyElement = document.querySelector("body");
 const hamburgerToggle = document.querySelector("header nav button");
+const navElement = document.querySelector("body > nav");
 
 const h1Letters = document.querySelectorAll(".index section:first-of-type h1 span");
 
@@ -8,13 +9,22 @@ const mijnwerkIndex = document.querySelectorAll(
 	".index section:nth-of-type(4) ul:nth-of-type(2) li"
 );
 
-const darkModeToggle = document.querySelector("body > nav div button");
+const darkModeToggle = document.querySelector("body > nav div:last-of-type");
 let currentTheme = localStorage.getItem("currentTheme");
 
 //log tabbed element (testing)
 // document.addEventListener('focusin', function() {
 //   console.log('focused: ', document.activeElement)
 // }, true);
+
+// bodyElement.addEventListener("click", function(e) {
+// 	console.log(e.target);
+// 		console.log(hamburgerToggleSpan[i]);
+// 		if(!navElement.contains(e.target) && e.target !== hamburgerToggle) {
+// 			bodyElement.classList.remove("openhamburger");
+// 		}
+// 	}
+// )
 
 //nav toggle
 const toggleNav = () => {
@@ -41,25 +51,20 @@ for (let i = 0; i < h1Letters.length; i++) {
 	});
 }
 
+//regelt alles voor darkmode, (pageload, toggle)
+//lightmode is nu de default, code van https://github.com/Laurens256/portfolio-projecten/tree/main/among%20us%20website  pakken als we naar systeemvoorkeur willen luisteren
 const toggleDarkMode = (event) => {
 	//pagina load geeft als event undefined, alleen dan kijken naar localstorage/systeemvoorkeur
 	if (event == undefined) {
-		if (
-			window.matchMedia("(prefers-color-scheme: dark)").matches &&
-			currentTheme == null
-		) {
-			rootElement.classList.add("darkmode");
-		} else if (currentTheme == "dark") {
+		if (currentTheme == "dark") {
 			rootElement.classList.add("darkmode");
 		}
 		return;
 	}
-	if (event.target.tagName == "BUTTON" || event.target.tagName == "SPAN") {
+
+	//check voor linker muisklik of enter press
+	if(event.keyCode == 13 || event.button == 0) {
 		rootElement.classList.toggle("darkmode");
-	} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-		rootElement.classList.add("darkmode");
-	} else {
-		rootElement.classList.remove("darkmode");
 	}
 
 	if (rootElement.classList.contains("darkmode")) {
@@ -72,4 +77,5 @@ const toggleDarkMode = (event) => {
 toggleDarkMode();
 
 darkModeToggle.addEventListener("click", toggleDarkMode);
+darkModeToggle.addEventListener("keyup", toggleDarkMode);
 hamburgerToggle.addEventListener("click", toggleNav);
