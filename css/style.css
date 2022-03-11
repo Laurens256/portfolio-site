@@ -8,6 +8,11 @@
     src: url(../assets/Staatliches-Regular.ttf);
 }
 
+@font-face {
+    font-family: Silkscreen;
+    src: url(../assets/slkscr.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -29,7 +34,7 @@
 
     --primair: #164db5;
     --secundair: #13429f;
-    --accentkleur: #ff1212;
+    --accentkleur: #990099;
 
     --zon: #eccc68;
     --maan: #eccc68;
@@ -51,6 +56,10 @@
 *:focus-visible {
     outline: var(--accentkleur) dashed;
     outline-width: 3px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -111,6 +120,7 @@ header nav {
 }
 
 header nav p {
+    font-family: Silkscreen, OpenSans, Arial, Helvetica, sans-serif;
     font-size: 1.7rem;
     color: var(--tekstkleur);
 }
@@ -286,7 +296,7 @@ index, 1e section (Laurens Duin)
 
 .index section:first-of-type h1 span {
     color: var(--tekstkleur);
-    font-family: Staatliches, OpenSans;
+    font-family: Staatliches, Impact, OpenSans;
     font-weight: normal;
     display: inline-block;
 }
@@ -336,7 +346,9 @@ index, 2e section (wie ben ik)
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     grid-column-gap: 3em;
-    background: var(--primair);
+    /* background: var(--primair); */
+    background: var(--bodycolor);
+    border: solid 2px var(--tekstkleur);
     padding: 2em;
     border-radius: 1em;
     max-width: 80em;
@@ -349,12 +361,12 @@ index, 2e section (wie ben ik)
 
 .index section:nth-of-type(2) > div:first-of-type h2 {
     font-size: 1.8rem;
-    color: var(--tekstkleuralt);
+    color: var(--tekstkleur);
 }
 
 .index section:nth-of-type(2) > div:first-of-type p {
     font-size: 1.25rem;
-    color: var(--tekstkleuralt);
+    color: var(--tekstkleur);
 }
 
 .index section:nth-of-type(2) > div:first-of-type p a {
@@ -382,7 +394,8 @@ index, 3e section (mijn vaardigheden)
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: var(--secundair);
+    background: var(--bodycolor);
+    border: solid 2px var(--tekstkleur);
     border-radius: 1em;
     width: fit-content;
     min-width: 12.5em;
@@ -391,7 +404,7 @@ index, 3e section (mijn vaardigheden)
 }
 
 .index section:nth-of-type(3) ul li {
-    color: var(--tekstkleuralt);
+    color: var(--tekstkleur);
 }
 
 .index section:nth-of-type(3) ul li:first-child {
@@ -487,13 +500,14 @@ mijn werk
     position: relative;
     height: 20em;
     width: 15em;
-    background: var(--primair);
-    border-radius: 5px;
+    background: var(--bodycolor);
+    border: solid 2px var(--tekstkleur);
+    border-radius: 1em;
 }
 
 .mijnwerk section aside p {
     margin-bottom: 1em;
-    color: var(--tekstkleuralt);
+    color: var(--tekstkleur);
 }
 
 .mijnwerk section aside p strong {
@@ -511,17 +525,134 @@ mijn werk
 
 .mijnwerk section aside ul li {
     text-align: center;
-    padding: .5em;
-    border: solid 2px var(--accentkleur);
-    border-radius: 10px;
     min-width: 40%;
 }
 
 .mijnwerk section aside ul li a {
     display: block;
-    color: var(--tekstkleuralt);
+    color: var(--tekstkleur);
+    padding: .6em 0;
+    border: solid 2px var(--accentkleur);
+    border-radius: 10px;
+    transition: all .3s;
 }
 
+.mijnwerk section aside ul li a:hover {
+    background: var(--accentkleur);
+    color: var(--wit);   
+}
+
+
+
+
+
+/*****************************
+contact
+*****************************/
+.contact section:first-of-type {
+    /* 100vh - height header - height footer */
+    min-height: calc(100vh - 5em - 10em);
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    margin: 0 10vw;
+    align-items: center;
+}
+
+.contact section:first-of-type aside {
+    justify-self: end;
+    background: var(--bodycolor);
+    border: solid 1px var(--tekstkleur);
+    /* width = 100% - padding links en rechts */
+    width: calc(100% - 4em);
+    max-height: 30em;
+    padding: 2em;
+    height: 100%;
+}
+
+.contact section:first-of-type aside ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3em;
+    height: 100%;
+    gap: 2em;
+}
+
+.contact section:first-of-type aside ul li {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 1.1rem;
+    color: var(--tekstkleur);
+}
+
+.contact section:first-of-type aside ul li svg {
+    width: 1.75em;
+}
+
+.contact section:first-of-type aside ul li svg path {
+    fill: var(--tekstkleur);
+}
+
+.contact section:first-of-type form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 4em);
+    padding: 2em;
+    justify-self: start;
+    background: var(--bodycolor);
+    border: solid 1px var(--tekstkleur);
+    height: 100%;
+    max-height: 30em;
+}
+
+.contact section:first-of-type form div {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+}
+
+.contact section:first-of-type form label {
+    color: var(--tekstkleur);
+    font-size: 1.1rem;
+}
+
+.contact section:first-of-type form input,
+.contact section:first-of-type form textarea {
+    font-size: 1rem;
+    padding: .3em;
+    border: solid 2px var(--accentkleur);
+}
+
+.contact section:first-of-type form div:last-of-type {
+    height: 7em;
+    max-width: 95%;
+    grid-column: 1/-1;
+}
+
+.contact section:first-of-type form textarea {
+    height: 100%;
+    resize: none;
+}
+
+.contact section:first-of-type form input:focus::placeholder,
+.contact section:first-of-type form textarea:focus::placeholder {
+    color: transparent;
+}
+
+.contact section:first-of-type form input[type=submit] {
+    grid-column: 1/-1;
+    width: 10em;
+    height: 4em;
+    background: var(--bodycolor);
+    color: var(--tekstkleur);
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.contact section:first-of-type form input[type=submit]:hover {
+    color: var(--wit);
+    background: var(--accentkleur);
+}
 
 
 
@@ -591,7 +722,7 @@ mobiel
         min-width: auto;
     }
 
-    body section {
+    body:not(.contact) section {
         margin-bottom: 2em !important;
     }
 
@@ -688,6 +819,42 @@ mijn werk 1e section (Among us) 768px
     margin: 0 auto;
     height: 12.5em;
     grid-row: 3 / 4;
+}
+
+
+
+
+
+/*****************************
+contact 768px
+*****************************/
+.contact section:first-of-type {
+    grid-template-columns: 1fr;
+    margin: 0 5vw;
+}
+
+.contact section:first-of-type aside {
+    height: auto;
+}
+
+.contact section:first-of-type form {
+    justify-self: end;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    height: auto;
+}
+
+.contact section:first-of-type form div {
+    max-width: 95%;
+}
+
+.contact section:first-of-type form input,  
+.contact section:first-of-type form textarea {
+    width: 100%;
+}
+
+.contact section:first-of-type form input[type=submit] {
+    width: 100%;
 }
 
 }

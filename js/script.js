@@ -4,6 +4,7 @@ const hamburgerToggle = document.querySelector("header nav button");
 const navElement = document.querySelector("body > nav");
 
 const h1Letters = document.querySelectorAll(".index section:first-of-type h1 span");
+const downArrow = document.querySelector(".index section:first-of-type > svg");
 
 const mijnwerkIndex = document.querySelectorAll(
 	".index section:nth-of-type(4) ul:nth-of-type(2) li"
@@ -16,15 +17,6 @@ let currentTheme = localStorage.getItem("currentTheme");
 // document.addEventListener('focusin', function() {
 //   console.log('focused: ', document.activeElement)
 // }, true);
-
-// bodyElement.addEventListener("click", function(e) {
-// 	console.log(e.target);
-// 		console.log(hamburgerToggleSpan[i]);
-// 		if(!navElement.contains(e.target) && e.target !== hamburgerToggle) {
-// 			bodyElement.classList.remove("openhamburger");
-// 		}
-// 	}
-// )
 
 //nav toggle
 const toggleNav = () => {
@@ -51,6 +43,10 @@ for (let i = 0; i < h1Letters.length; i++) {
 	});
 }
 
+const scrollDownIndex = () => {
+	window.scroll(0, window.innerHeight - 100);
+}
+
 //regelt alles voor darkmode, (pageload, toggle)
 //lightmode is nu de default, code van https://github.com/Laurens256/portfolio-projecten/tree/main/among%20us%20website  pakken als we naar systeemvoorkeur willen luisteren
 const toggleDarkMode = (event) => {
@@ -75,6 +71,10 @@ const toggleDarkMode = (event) => {
 };
 
 toggleDarkMode();
+
+if(window.location.href.indexOf("index.html") > -1) {
+downArrow.addEventListener("click", scrollDownIndex);
+}
 
 darkModeToggle.addEventListener("click", toggleDarkMode);
 darkModeToggle.addEventListener("keyup", toggleDarkMode);
