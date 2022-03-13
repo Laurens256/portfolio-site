@@ -34,7 +34,8 @@
 
     --primair: #164db5;
     --secundair: #13429f;
-    --accentkleur: #990099;
+    --accentkleur: #2568FB;
+    /* --accentkleur: #990099; */
 
     --zon: #eccc68;
     --maan: #eccc68;
@@ -482,7 +483,7 @@ mijn werk
     grid-template-columns: 65% 1fr;
     gap: 1em;
     height: fit-content;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     border-bottom: solid 2px gainsboro;
     padding: 2em 0;
 }
@@ -537,7 +538,8 @@ mijn werk
     transition: all .3s;
 }
 
-.mijnwerk section aside ul li a:hover {
+.mijnwerk section aside ul li a:hover,
+    .mijnwerk section aside ul li a:focus {
     background: var(--accentkleur);
     color: var(--wit);   
 }
@@ -549,6 +551,10 @@ mijn werk
 /*****************************
 contact
 *****************************/
+.contact > div {
+    margin-bottom: 2em;
+}
+
 .contact section:first-of-type {
     /* 100vh - height header - height footer */
     min-height: calc(100vh - 5em - 10em);
@@ -561,7 +567,7 @@ contact
 .contact section:first-of-type aside {
     justify-self: end;
     background: var(--bodycolor);
-    border: solid 1px var(--tekstkleur);
+    border: solid 2px var(--tekstkleur);
     /* width = 100% - padding links en rechts */
     width: calc(100% - 4em);
     max-height: 30em;
@@ -581,8 +587,11 @@ contact
     display: flex;
     align-items: center;
     gap: 1em;
-    font-size: 1.1rem;
     color: var(--tekstkleur);
+}
+
+.contact section:first-of-type aside ul li p {
+    font-size: 1.1fem;
 }
 
 .contact section:first-of-type aside ul li svg {
@@ -600,7 +609,7 @@ contact
     padding: 2em;
     justify-self: start;
     background: var(--bodycolor);
-    border: solid 1px var(--tekstkleur);
+    border: solid 2px var(--tekstkleur);
     height: 100%;
     max-height: 30em;
 }
@@ -620,6 +629,15 @@ contact
 .contact section:first-of-type form textarea {
     font-size: 1rem;
     padding: .3em;
+    border: solid 2px var(--tekstkleur);
+}
+
+.contact section:first-of-type form input:focus,
+.contact section:first-of-type form textarea:focus {
+    border: solid 2px var(--accentkleur);
+}
+
+.contact section:first-of-type form:focus-within {
     border: solid 2px var(--accentkleur);
 }
 
@@ -649,9 +667,16 @@ contact
     transition: all .2s;
 }
 
-.contact section:first-of-type form input[type=submit]:hover {
+.contact section:first-of-type form input[type=submit]:hover,
+.contact section:first-of-type form input[type=submit]:focus {
     color: var(--wit);
     background: var(--accentkleur);
+}
+
+.contact section:first-of-type form input:focus-visible,
+.contact section:first-of-type form textarea:focus-visible {
+    outline: var(--accentkleur) solid;
+    outline-width: 3px;
 }
 
 
@@ -688,11 +713,13 @@ footer ul li a svg path {
     fill: var(--tekstkleur)
 }
 
-footer ul li a svg:hover {
+footer ul li a svg:hover,
+footer ul li a:focus svg {
     transform: scale(1.1);
 }
 
-footer ul li a svg:hover path {
+footer ul li a svg:hover path,
+footer ul li a:focus svg path {
     fill: var(--accentkleur);
 }
 
@@ -888,6 +915,25 @@ medium screen
         margin: 2em 4vw 0 4vw;
     }
 
+
+
+    /*****************************
+    contact 1120px
+    *****************************/
+    .contact section:first-of-type {
+        margin: 0 5vw;
+    }
+
+}
+
+/*****************************
+landscape phone
+*****************************/
+/* nav fix */
+@media screen and (max-height: 400px) {
+    body > nav ul {
+        top: 5%;
+    }
 }
 
 
