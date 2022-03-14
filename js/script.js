@@ -73,7 +73,7 @@ const toggleDarkMode = (event) => {
 
 toggleDarkMode();
 
-if(window.location.href.indexOf("index.html") > -1) {
+if(bodyElement.classList.contains("index")) {
 downArrow.addEventListener("click", scrollDownIndex);
 }
 

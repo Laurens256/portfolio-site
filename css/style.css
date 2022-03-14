@@ -42,7 +42,8 @@
 
 :root.darkmode {
     --bodycolor: #1E1E1E;
-    --codeachtergrond: red;
+    --codeachtergrond: #4d525a
+    ;
     --navachtergrond: rgba(0, 0, 0, 0.8);
 
     --tekstkleur: #fff;
@@ -87,8 +88,10 @@ h2 {
 }
 
 code {
-    font-family: 'Lucida Sans', 'Courier New', 'Courier', 'monospace';
+    font-family: Courier New, ui-monospace, Courier, monospace, sans-serif;
     background: var(--codeachtergrond);
+    padding: .2em;
+    border-radius: .2em;
 }
 
 
@@ -357,8 +360,10 @@ index, 2e section (wie ben ik)
 }
 
 .index section:nth-of-type(2) > img {
-    width: 35em;
-    justify-self: right;
+    width: 25em;
+    border-radius: 1em;
+    justify-self: center;
+    /* justify-self: right; */
 }
 
 .index section:nth-of-type(2) > div:first-of-type h2 {
