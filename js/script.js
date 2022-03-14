@@ -1,8 +1,10 @@
 const rootElement = document.querySelector(":root");
-rootElement.classList.remove("geenjs");
 const bodyElement = document.querySelector("body");
 const hamburgerToggle = document.querySelector("header nav button");
 const navElement = document.querySelector("body > nav");
+const closeNav = document.querySelector("body > div:last-of-type");
+
+rootElement.classList.remove("geenjs");
 
 const h1Letters = document.querySelectorAll(".index section:first-of-type h1 span");
 const downArrow = document.querySelector(".index section:first-of-type > svg");
@@ -13,6 +15,9 @@ const mijnwerkIndex = document.querySelectorAll(
 
 const darkModeToggle = document.querySelector("body > nav div:last-of-type");
 let currentTheme = localStorage.getItem("currentTheme");
+
+//browser detection, voor firefox omdat toggleDarkMode() localstorage niet kan ophalen voordat pagina is geladen. Werkt wel in chromium browsers (boolean)
+const isFirefox = typeof InstallTrigger !== "undefined";
 
 //log tabbed element (testing)
 // document.addEventListener('focusin', function() {
@@ -49,7 +54,7 @@ const scrollDownIndex = () => {
 }
 
 //regelt alles voor darkmode, (pageload, toggle)
-//lightmode is nu de default, code van https://github.com/Laurens256/portfolio-projecten/tree/main/among%20us%20website  pakken als we naar systeemvoorkeur willen luisteren
+//lightmode is nu de default, code van https://github.com/Laurens256/portfolio-projecten/tree/main/among%20us%20website pakken als we naar systeemvoorkeur willen luisteren
 const toggleDarkMode = (event) => {
 	//pagina load geeft als event undefined, alleen dan kijken naar localstorage/systeemvoorkeur
 	if (event == undefined) {
@@ -71,7 +76,20 @@ const toggleDarkMode = (event) => {
 	}
 };
 
-toggleDarkMode();
+if(isFirefox) {
+	window.addEventListener("load", () => {
+		console.log("ja");
+		if(document.readyState === "complete") {
+			if (currentTheme == "dark") {
+				rootElement.classList.add("darkmode");
+			}
+		}
+	});
+}
+
+if(!isFirefox) {
+	toggleDarkMode();
+}
 
 if(bodyElement.classList.contains("index")) {
 downArrow.addEventListener("click", scrollDownIndex);
@@ -80,3 +98,6 @@ downArrow.addEventListener("click", scrollDownIndex);
 darkModeToggle.addEventListener("click", toggleDarkMode);
 darkModeToggle.addEventListener("keyup", toggleDarkMode);
 hamburgerToggle.addEventListener("click", toggleNav);
+closeNav.addEventListener("click", () => {
+	bodyElement.classList.remove("openhamburger");
+});
