@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="geenjs">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,7 +95,7 @@
 
 			<form name="contact" method="POST" data-netlify="true">
 				<div>
-				<label for="naam">Naam</label>
+				<label for="naam">Naam<small>*</small></label>
 				<input id="naam" type="text" placeholder="Naam" name="Naam"/>
 				</div>
 
@@ -105,7 +105,7 @@
 				</div>
 
 				<div>
-				<label for="email-adres">Email-adres</label>
+				<label for="email-adres">Email-adres<small>*</small></label>
 				<input id="email-adres" type="email" placeholder="Email"  name="Email"/>
 				</div>
 
@@ -115,9 +115,11 @@
 				</div>
 
 				<div>
-				<label for="bericht">Bericht</label>
+				<label for="bericht">Bericht<small>*</small></label>
 				<textarea id="bericht" placeholder="Bericht" name="Bericht"></textarea>
 				</div>
+
+				<p>Vakken met een ster (<small>*</small>) zijn vereist</p>
 
 				<input type="submit" value="Verstuur" />
 			</form>

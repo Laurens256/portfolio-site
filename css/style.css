@@ -27,15 +27,14 @@
     --zwart: #000;
 
     --bodycolor: #fff;
+    --codeachtergrond: #f6f8fa;
     --navachtergrond: rgba(0, 0, 0, 0.8);
 
     --tekstkleur: #000;
     --tekstkleuralt: #fff;
+    --linkkleur: #2568FB;
 
-    --primair: #164db5;
-    --secundair: #13429f;
     --accentkleur: #2568FB;
-    /* --accentkleur: #990099; */
 
     --zon: #eccc68;
     --maan: #eccc68;
@@ -43,14 +42,13 @@
 
 :root.darkmode {
     --bodycolor: #1E1E1E;
+    --codeachtergrond: red;
     --navachtergrond: rgba(0, 0, 0, 0.8);
 
     --tekstkleur: #fff;
     --tekstkleuralt: #000;
+    --linkkleur: pink;
 
-    --primair: #ffc82a;
-    /* --secundair: #C23B21; */
-    --secundair: #fcd12a;
     --accentkleur: #2568FB;
 }
 
@@ -88,6 +86,11 @@ h2 {
     color: var(--tekstkleur)
 }
 
+code {
+    font-family: 'Lucida Sans', 'Courier New', 'Courier', 'monospace';
+    background: var(--codeachtergrond);
+}
+
 
 
 /*****************************
@@ -104,7 +107,6 @@ header {
 }
 
 body > div {
-    background: var(--bodycolor);
     width: 100%;
     height: 5em;
 }
@@ -347,7 +349,6 @@ index, 2e section (wie ben ik)
     grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     grid-column-gap: 3em;
-    /* background: var(--primair); */
     background: var(--bodycolor);
     border: solid 2px var(--tekstkleur);
     padding: 2em;
@@ -371,7 +372,7 @@ index, 2e section (wie ben ik)
 }
 
 .index section:nth-of-type(2) > div:first-of-type p a {
-    color: var(--accentkleur);
+    color: var(--linkkleur);
     text-decoration: underline;
 }
 
@@ -490,6 +491,11 @@ mijn werk
 
 .mijnwerk section p {
     color: var(--tekstkleur);
+}
+
+.mijnwerk section p a {
+    color: var(--linkkleur);
+    text-decoration: underline;
 }
 
 .mijnwerk section img {
@@ -621,8 +627,15 @@ contact
 }
 
 .contact section:first-of-type form label {
+    position: relative;
     color: var(--tekstkleur);
     font-size: 1.1rem;
+}
+
+.contact section:first-of-type form label small {
+    color: var(--linkkleur);
+    font-size: 1.15rem;
+    margin-left: .1em;
 }
 
 .contact section:first-of-type form input,
@@ -655,6 +668,16 @@ contact
 .contact section:first-of-type form input:focus::placeholder,
 .contact section:first-of-type form textarea:focus::placeholder {
     color: transparent;
+}
+
+.contact section:first-of-type form p {
+    grid-column: 1/-1;
+    color: var(--tekstkleur);
+}
+
+.contact section:first-of-type form p small {
+    color: var(--linkkleur);
+    font-size: 1rem;
 }
 
 .contact section:first-of-type form input[type=submit] {
@@ -869,6 +892,7 @@ contact 768px
     grid-template-columns: 1fr;
     gap: 1em;
     height: auto;
+    max-height: none;
 }
 
 .contact section:first-of-type form div {
@@ -930,9 +954,14 @@ medium screen
 landscape phone
 *****************************/
 /* nav fix */
-@media screen and (max-height: 400px) {
+@media screen and (max-height: 450px) {
     body > nav ul {
-        top: 5%;
+        flex-direction: row;
+        gap: 1.5em;
+    }
+
+    body > nav ul li {
+        white-space: nowrap;
     }
 }
 
@@ -944,5 +973,66 @@ reduced motion
 @media (prefers-reduced-motion) {
     * {
         transition: none !important;
+    }
+}
+
+
+
+/*****************************
+Site zonder js
+*****************************/
+/* nav */
+html.geenjs body header {
+    display: none;
+}
+
+html.geenjs body > div {
+    position: relative;
+    height: 6em;
+}
+
+html.geenjs body > nav {
+    min-width: auto;
+    width: 100%;
+    height: 6em;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    border-bottom: solid 2px var(--accentkleur);
+    transform: translateX(0);
+    z-index: 9;
+}
+
+html.geenjs body > nav ul {
+    flex-direction: row;
+    column-gap: 1em;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+}
+
+html.geenjs body > nav ul li a {
+    display: block;
+    font-size: 1.8rem;
+}
+
+html.geenjs body > nav div {
+    display: none;
+}
+
+
+
+/* thema */
+@media (prefers-color-scheme: dark) {
+    :root.geenjs {
+    --bodycolor: #1E1E1E;
+    --navachtergrond: rgba(0, 0, 0, 0.8);
+
+    --tekstkleur: #fff;
+    --tekstkleuralt: #000;
+    --linkkleur: pink;
+
+    --accentkleur: #2568FB;
     }
 }

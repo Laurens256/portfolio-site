@@ -1,4 +1,5 @@
 const rootElement = document.querySelector(":root");
+rootElement.classList.remove("geenjs");
 const bodyElement = document.querySelector("body");
 const hamburgerToggle = document.querySelector("header nav button");
 const navElement = document.querySelector("body > nav");
