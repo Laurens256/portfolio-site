@@ -78,7 +78,6 @@ const toggleDarkMode = (event) => {
 
 if(isFirefox) {
 	window.addEventListener("load", () => {
-		console.log("ja");
 		if(document.readyState === "complete") {
 			if (currentTheme == "dark") {
 				rootElement.classList.add("darkmode");
