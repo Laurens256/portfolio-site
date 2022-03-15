@@ -477,7 +477,7 @@ index, 4e section (mijn werk)
 }
 
 .index section:nth-of-type(4) ul li div:hover,
-.index section:nth-of-type(4) ul li div:focus {
+.index section:nth-of-type(4) ul li a:focus div {
     background: rgba(0, 0, 0, 0.6);
     opacity: 100;
 }
