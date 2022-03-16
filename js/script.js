@@ -100,3 +100,7 @@ hamburgerToggle.addEventListener("click", toggleNav);
 closeNav.addEventListener("click", () => {
 	bodyElement.classList.remove("openhamburger");
 });
+
+window.addEventListener("load", () => {
+	navElement.style.transition = "transform .3s ease-in-out";
+});
